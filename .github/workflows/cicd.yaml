@@ -35,10 +35,10 @@ jobs:
         run: python main.py
 
       
-      # 6. Print Secret Value file
-      - name: Trying secret concepts to print
-        run: |
-         NAME: ${{ secrets.NAME }}
-         DOB: ${{ secrets.DOB }}
-         echo "$NAME"
-         echo "$DOB"
+      - name: Trying secret concepts
+        env:
+          NAME: ${{ secrets.NAME }}
+          DOB: ${{ secrets.DOB }}
+          run: |
+            echo "NAME is configured: $([ -n "$NAME" ] && echo yes || echo no)"
+            echo "DOB is configured: $([ -n "$DOB" ] && echo yes || echo no)"
