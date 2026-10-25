@@ -1,4 +1,5 @@
 name: Python CI
+
 on:
   push:
   workflow_dispatch:
@@ -29,16 +30,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-
       # 5. Run Python file
       - name: Run Python script
         run: python main.py
 
-      
+      # 6. Trying secret concepts (Fixed Indentation)
       - name: Trying secret concepts
         env:
           NAME: ${{ secrets.NAME }}
           DOB: ${{ secrets.DOB }}
-          run: |
-            echo "NAME is configured: $([ -n "$NAME" ] && echo yes || echo no)"
-            echo "DOB is configured: $([ -n "$DOB" ] && echo yes || echo no)"
+        run: |
+          echo "NAME is configured: $([ -n "$NAME" ] && echo yes || echo no)"
+          echo "DOB is configured: $([ -n "$DOB" ] && echo yes || echo no)"
